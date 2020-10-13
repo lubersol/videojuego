@@ -1,7 +1,19 @@
+body {
+    background-color: black;
+}
 .caratula {
     display: flex;
+}
+#caratula {
+    padding-bottom: 0.4em;
 }
 .players {
     display:flex;
     flex-direction: column;
 }
+.players {
+border: 1px solid black;
+}
+
+
+
