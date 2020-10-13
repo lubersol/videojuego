@@ -1,0 +1,7 @@
+.caratula {
+    display: flex;
+}
+.players {
+    display:flex;
+    flex-direction: column;
+}
