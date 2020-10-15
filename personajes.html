@@ -1,19 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personajes The Witcher</title>
     <link rel="stylesheet" href="css/estilos.css">
 </head>
+
 <body>
     <div class="selectAll">
-        <div class="fighter" id="personaje1" onclick="elegirPersonaje('Yennefer')"><img src="img/personajeYennefer.jpg" alt="imagen de Yennefer">Yennefer<div>
-        <div class="fighter" id="personaje2" onclick="elegirPersonaje('Ciri')"><img src="img/personajeCiri.jpg" alt="imagen de Ciri">Ciri</div>
-        <div class="fighter" id="personaje3" onclick="elegirPersonaje('Gerald')"><img src="img/personajeGerald.jpg" alt="imagen de Gerald">Gerald</div>
-        <div class="fighter" id="personaje4" onclick="elegirPersonaje('Maribol')"><img src="img/personajeMaribol.jpg" alt="imagen de Maribol">Maribol</div>
+        <div class="fighter" id="personaje1" onclick="elegirPersonaje('Yennefer')">
+            <img src="img/personajeYennefer.jpg" alt="imagen de Yennefer">Yennefer
+        </div>
+        <div class="fighter" id="personaje2" onclick="elegirPersonaje('Ciri')">
+            <img src="img/personajeCiri.jpg" alt="imagen de Ciri">Ciri
+        </div>
+        <div class="fighter" id="personaje3" onclick="elegirPersonaje('Gerald')">
+            <img src="img/personajeGerald.jpg" alt="imagen de Gerald">Gerald
+        </div>
+        <div class="fighter" id="personaje4" onclick="elegirPersonaje('Maribol')">
+            <img src="img/personajeMaribol.jpg" alt="imagen de Maribol">Maribol
+        </div>
     </div>
-    <button onclick="botonClick(500)">CLICK ME</button>
-        <script src="js/main.js"></script>   
+    <div id="click">
+        <button id="boton" onclick="botonClick(500)">CLICK ME</button>
+    </div>
+
+    <script src="js/main.js"></script>
 </body>
+
 </html>
