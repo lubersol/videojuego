@@ -7,12 +7,13 @@ body {
 
 /* ESTILOS PARA LA PANTALLA PRINCIPAL */
 
-#capaGenerl {
+#capaGeneral {
     display: inline-block;
 }
 
 .caratula {
     display: flex;
+    margin-top: 1em;
 }
 
 #caratula {
@@ -40,12 +41,13 @@ body {
     display: inline-block;
     position: absolute;
     background-color: rgb(226, 199, 220);
+    background: -webkit-linear-gradient(rgb(24, 23, 24), rgb(203, 190, 206));
     width: 8em;
     height: 2em;
     font-family: monospace;
     font-size: 1em;
     font-weight: bold;
-    border: 3px solid rgb(182, 107, 182);
+    border: 3px solid rgb(85, 82, 85);
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -64,6 +66,14 @@ body {
     transition: display .4s;
 }
 
+.texto {
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-size: 1.1em;
+    text-align: center;
+}
+
 .selectAll {
     display: flex;
     flex-direction: row;
@@ -74,7 +84,7 @@ body {
 }
 
 .fighter {
-    margin: 3em;
+    margin: 2.5em;
     border: 1px solid rgb(226, 224, 224);
     width: 100%;
     text-align: center;
@@ -96,12 +106,13 @@ body {
 
 #boton {
     background-color: rgb(226, 199, 220);
+    background: -webkit-linear-gradient(rgb(24, 23, 24), rgb(203, 190, 206));
     width: 7em;
     height: 2.2em;
     font-family: monospace;
     font-size: 1.3em;
     font-weight: bold;
-    border: 3px solid rgb(182, 107, 182);
+    border: 3px solid rgb(85, 82, 85);;
     cursor: pointer;
     text-align: center;
     text-decoration: none;

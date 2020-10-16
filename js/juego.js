@@ -1,3 +1,17 @@
+// MOSTRAR CAPA PERSONAJES Y OCULTAR PAGINA PRINCIPAL
+function display() {
+    let clic = 1;
+    if (clic == 1) {
+        document.getElementById("container").style.display = 'block';
+        document.getElementById("capaGeneral").style.display = 'none';
+        clic = clic + 1;
+    } else {
+        document.getElementById("container").style.display = 'none';
+        document.getElementById("capaGeneral").style.display = 'block';
+        clic = 1;
+    }
+}
+
 //Declaracion de variables del juego
 
 let arrayPersonajes = [];
@@ -29,6 +43,7 @@ const funcionArgumentosFijos = (argumento3, argumento4 = 400) => {
 
 const botonClick = (arg1) => {
     console.log("Me has clickado y me has pasado el numero :", arg1, " como argumento.");
+    //AQUI TENDRIA QUE ESTAR EL CODIGO QUE HACE QUE APAREZCAN EN PANTALLA LOS DOS JUGADORES ELEGIDOS. USAR INNERHTML Y DOM.
 }
 
 const elegirPersonaje = (personaje) => {
@@ -38,7 +53,7 @@ const elegirPersonaje = (personaje) => {
         arrayPersonajes.push(personaje);
 
         if (arrayPersonajes.length == 2) {
-            alert("Ya has escogido los 2 personajes", arrayPersonajes);
+            alert(`Ya has escogido los 2 personajes: ${arrayPersonajes} DALE A START!`);
             return;
         }
         console.log(arrayPersonajes);
@@ -50,15 +65,15 @@ const elegirPersonaje = (personaje) => {
 //elenco de funciones útiles que podremos utilizar a nuestro antojo en varios proyectos
 
 const funciones = {
-    
+
     minMax: (n, min, max) => {
         //min and max limiter..
-        return Math.max (Math.min (n, max), min);
+        return Math.max(Math.min(n, max), min);
     },
-    random(min, max){
+    random(min, max) {
         //random creation of a number..
         return Math.floor(Math.random() * (max - min) + min);
     }
-    
+
 }
 

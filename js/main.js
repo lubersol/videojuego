@@ -1,30 +1,28 @@
-//CLASES DE LOS JUGADORES Y METODOS
+let partida = {
 
-class Player {
-    constructor(nombre, ataque, suerte){
-        this.nombre = nombre;
-        this.ataque = ataque;
-        this.suerte = suerte;
-        this.vida = 200; 
-    }
+    //propiedades
+    equipo1: [],
+    equipo2: [],
 
-    atacar(enemigo) {
 
-        let luck = funciones.random (1, enemigo.suerte);
+    //métodos
 
-        let atack = (this.ataque - enemigo.defensa)*luck;
+    escoge1(idLuchador){
+        //player 1 selección de personajes.
 
-        enemigo.vida -= atack;
-    }
-    
-    especial() {
-        let atack = (this.ataque + 2);
+        /*introducimos los luchadores escogidos en su array correspondiente.
+          usamos el diccionario-traductor allplayers con la idLuchador como referencia para 
+          direccionar a la clase instanciada*/
+        this.equipo1.push(allplayers[idLuchador]);
 
-        enemigo.vida -= atack;
-    }
+        //comprobamos el array del primero equipo por consola.
+        console.log(this.equipo1);
+    },
+
+    escoge2(){
+        //repetiremos la operación del primer equipo, en este caso hemos de averiguar como 
+        //hacerlo para no poder escoger luchadores repetidos. 
+    },
+
+
 }
-
-//INSTANCIAR PLAYER 1 Y 2
-
-let player1 = new Player("Gerald de Rivia", 50, 40);
-let player2 = new Player("Yennefer", 30, 50);
