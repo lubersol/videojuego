@@ -1,11 +1,9 @@
 //CLASES DE LOS JUGADORES Y METODOS
 
 class Player {
-    constructor(nombre, ataque, defensa, resistencia, suerte){
+    constructor(nombre, ataque, suerte){
         this.nombre = nombre;
         this.ataque = ataque;
-        this.defensa = defensa;
-        this.resistencia = resistencia;
         this.suerte = suerte;
         this.vida = 200; 
     }
@@ -18,9 +16,7 @@ class Player {
 
         enemigo.vida -= atack;
     }
-    defender() {
-
-    }
+    
     especial() {
         let atack = (this.ataque + 2);
 
@@ -30,5 +26,5 @@ class Player {
 
 //INSTANCIAR PLAYER 1 Y 2
 
-let player1 = new Player("Gerald de Rivia", 50, 40, 10, 5);
-let player2 = new Player("Yennefer", 30, 50, 40, 7);
+let player1 = new Player("Gerald de Rivia", 50, 40);
+let player2 = new Player("Yennefer", 30, 50);

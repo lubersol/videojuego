@@ -1,3 +1,4 @@
+// MOSTRAR CAPA PERSONAJES Y OCULTAR PAGINA PRINCIPAL
 function display(){
     let clic = 1;
     if(clic==1){
@@ -9,5 +10,4 @@ function display(){
         document.getElementById("capaGeneral").style.display='block';
         clic = 1;
     }
-
 }
