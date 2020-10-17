@@ -9,10 +9,10 @@
 </head>
 
 <body>
-    <!-- CAPA CONTENEDORA DE PERSONAJES (SE DESPLIEGA CUANDO SE APRIETA EL BOTON LETS PLAY!) -->
-    <div id="container">
+    <!-- PANTALLA DE PERSONAJES (SE DESPLIEGA CUANDO SE APRIETA EL BOTON LETS PLAY! DE PANTALLA PRINCIPAL) -->
+    <div id="pantalla2">
         <div class="texto">ESCOGE DOS JUGADORES</div>
-        <div class="selectAll">
+        <div id="selectAll">
             <div class="fighter" id="personaje1" onclick="elegirPersonaje('Yennefer')">
                 <img src="img/personajeYennefer.jpg" alt="imagen de Yennefer">Yennefer
             </div>
@@ -27,10 +27,33 @@
             </div>
         </div>
         <div id="click">
-            <button id="boton" onclick="botonClick(500)">START</button>
+            <button id="boton" onclick="CambiaPantalla(3)">START</button>
         </div>
     </div>
     <!-- FIN DE LA CAPA DE LOS PERSONAJES -->
+    <!-- PANTALLA CON DOS PERSONAJES ESCOGIDOS - pantalla 3 -->
+    <div id="pantalla3" class="personajesElegidos" style="display: none;">
+        <div id="goodRoster" class="general roster">
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+        </div>
+        <button onclick="CambiaPantalla(4)">
+            START PLAY!
+        </button>
+    </div>
+    <!-- PANTALLA DE LUCHA - pantalla 4 -->
+    <div id="pantalla4" class="personajesElegidos" style="display: none;">
+        <div class="general general3">
+            <button onclick="Atacar()" id="ataque">
+                LET´S FIGHT!
+            </button>
+            <button onclick="CambiaPantalla(5)">
+                AND THE WINER IS..
+            </button>
+        </div>
+    </div>
     <!-- PAGINA PRINCIPAL -->
     <div id="capaGeneral">
         <div class="caratula">
@@ -38,17 +61,18 @@
             <div class="players">
                 <div class="player"><img src="img/Gerald.jpeg" alt="imagen de Gerald de Rivia" id="player1" onlick="">
                 </div>
-                <div class="player"><img src="img/yennefer.jpg" alt="imagen de Yennefer" id="player2" onclick=""></div>
+                <div class="player"><img src="img/yennefer.jpg" alt="imagen de Yennefer" id="player2" onclick="">
+                </div>
             </div>
         </div>
         <div id="jugar">
             <button id="botonJugar" onclick="display()">LETS PLAY!</button>
         </div>
     </div>
-    <script src="js/juego.js"></script>
-    <script src="js/players.js"></script>
+    <!-- <script src="js/juego.js"></script> -->
+    <!-- <script src="js/players.js"></script> -->
     <script src="js/main.js"></script>
-   
+
 </body>
 
 </html>

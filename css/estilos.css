@@ -1,11 +1,11 @@
 body {
     background-color: black;
     color: white;
-    font-family: monospace;
+    font-family: serif;
     font-size: 1.5em;
 }
 
-/* ESTILOS PARA LA PANTALLA PRINCIPAL */
+/* ESTILOS PARA LA PANTALLA PRINCIPAL - pantalla 1 */
 
 #capaGeneral {
     display: inline-block;
@@ -13,7 +13,7 @@ body {
 
 .caratula {
     display: flex;
-    margin-top: 1em;
+    margin-top: 0.5em;
 }
 
 #caratula {
@@ -44,7 +44,6 @@ body {
     background: -webkit-linear-gradient(rgb(24, 23, 24), rgb(203, 190, 206));
     width: 8em;
     height: 2em;
-    font-family: monospace;
     font-size: 1em;
     font-weight: bold;
     border: 3px solid rgb(85, 82, 85);
@@ -59,9 +58,9 @@ body {
     box-shadow: 0 12px 16px 0 rgba(189, 186, 186, 0.24), 0 17px 50px 0 rgba(89, 48, 102, 0.19);
 }
 
-/* ESTILOS PARA LA PANTALLA DE LOS PERSONAJES */
+/* ESTILOS PARA LA PANTALLA DE LOS PERSONAJES - pantalla 2 */
 
-#container {
+#pantalla2 {
     display: none;
     transition: display .4s;
 }
@@ -74,7 +73,7 @@ body {
     text-align: center;
 }
 
-.selectAll {
+#selectAll {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -84,7 +83,7 @@ body {
 }
 
 .fighter {
-    margin: 2.5em;
+    margin: 2em;
     border: 1px solid rgb(226, 224, 224);
     width: 100%;
     text-align: center;
@@ -92,7 +91,6 @@ body {
 
 .fighter:hover {
     cursor: pointer;
-
 }
 
 /* Estilos para el botón click me */
@@ -107,12 +105,12 @@ body {
 #boton {
     background-color: rgb(226, 199, 220);
     background: -webkit-linear-gradient(rgb(24, 23, 24), rgb(203, 190, 206));
-    width: 7em;
-    height: 2.2em;
-    font-family: monospace;
+    width: 5.5em;
+    height: 2em;
     font-size: 1.3em;
     font-weight: bold;
-    border: 3px solid rgb(85, 82, 85);;
+    border: 3px solid rgb(85, 82, 85);
+    ;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -122,4 +120,31 @@ body {
     background-color: rgb(184, 225, 226);
     color: black;
     box-shadow: 0 12px 16px 0 rgba(189, 186, 186, 0.24), 0 17px 50px 0 rgba(89, 48, 102, 0.19);
+}
+
+/* ESTILOS PARA LA PAGINA PERSONAJES ESCOGIDOS -pantalla 3 */
+
+ .personajesElegidos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.general {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+} 
+
+.card{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    /* background-color:rgba(0, 0, 0, 0.25); */
+    width: 20vw;
+    height: 90%;
+    margin: 1em;
+    background-size: 15em;
 }

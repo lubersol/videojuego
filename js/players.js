@@ -7,31 +7,35 @@ class Player {
         this.suerte = suerte;
         this.vida = 200;
     }
-
-    atacar(enemigo) {
+}
+    // atacar(enemigo) {
+    //     let luck = random(min, max) {
+    //         //random creation of a number..
+    //         return Math.floor(Math.random() * (max - min) + min));
+    //     }
         /*En este caso tenemos la referencia de una lógica muy básica para programar el ataque.
         Declaramos una variable luck que será igual al resultado que nos devuelve una función random 
         que tenemos en el archivo utiles.js, los parámetros que devuelve esta función tienen un mínimo de 1
         y un máximo de la suerte del enmigo
         */
 
-        let luck = funciones.random(1, enemigo.suerte);
+        // luck = funciones.random(1, enemigo.suerte);
         /*A continuación, depositamos en la variable hit, el resultado de primero restarle la defensa 
         del enemigo al luchador que emite el golpe, y posteriormente multiplicarlo por la variable luck
         obtenida antes.*/
 
-        let atack = (this.ataque - enemigo.defensa) * luck;
+        // atack = (this.ataque - enemigo.defensa) * luck;
         /*finalmente , restamos a la vida del enemigo el valor establecido en el golpe (hit)*/
 
-        enemigo.vida -= atack;
-    }
+    //     enemigo.vida -= atack;
+    // }
 
-    especial() {
-        let atack = (this.ataque + 2);
+//     especial() {
+//         let atack = (this.ataque + 2);
 
-        enemigo.vida -= atack;
-    }
-}
+//         enemigo.vida -= atack;
+//     }
+// }
 
 //INSTANCIO PLAYER 1, 2, 3 Y 4
 
