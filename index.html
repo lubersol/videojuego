@@ -4,75 +4,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página principal The Witcher</title>
+    <title>The Witcher</title>
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
+<!-- PAGINA PRINCIPAL -->
+<div class="seccionVisible principal" id="fase1">
+    <div class="general general1">
+        <button id="botonJugar" onclick="cambiaPantalla(2)">PLAY</button>
+    </div>
+</div>
+
     <!-- PANTALLA DE PERSONAJES (SE DESPLIEGA CUANDO SE APRIETA EL BOTON LETS PLAY! DE PANTALLA PRINCIPAL) -->
-    <div id="pantalla2">
+    <div class="seccionVisible" id="fase2" style="display: none;">
         <div class="texto">ESCOGE DOS JUGADORES</div>
-        <div id="selectAll">
-            <div class="fighter" id="personaje1" onclick="elegirPersonaje('Yennefer')">
-                <img src="img/personajeYennefer.jpg" alt="imagen de Yennefer">Yennefer
+        <div class="container">
+            <div class="cards" id="brujos">
+                <div class="pj">
+                    <div class="text">
+                        <img id="pj" src="img/personajeYennefer.jpg" alt="Yennefer">Yennefer
+                    </div>
+                    <div class="text">HP</div>
+                    <div class="text">Armor</div>
+                    <div class="text">Armor</div>
+                </div>
+                <div class="pj1">
+                    <div class="text">
+                        <img id="pj1" src="img/personajeCiri.jpg" alt="Ciri">Ciri
+                    </div>
+                    <div class="text">HP</div>
+                    <div class="text">Armor</div>
+                    <div class="text">Armor</div>
+                </div>
+                <div class="pj2">
+                    <div class="text">
+                        <img id="pj2" src="img/personajeGerald.jpg" alt="Gerald">Gerald
+                    </div>
+                    <div class="text">HP</div>
+                    <div class="text">Armor</div>
+                    <div class="text">Armor</div>
+                </div>
+                <div class="pj3">
+                    <div class="text">
+                        <img id="pj3" src="img/personajeMaribol.jpg" alt="Maribol">Maribol
+                    </div>
+                    <div class="text">HP</div>
+                    <div class="text">Armor</div>
+                    <div class="text">Armor</div>
+                </div>
+                <button id="boton" onclick="cambiaPantalla(3)">START</button>
             </div>
-            <div class="fighter" id="personaje2" onclick="elegirPersonaje('Ciri')">
-                <img src="img/personajeCiri.jpg" alt="imagen de Ciri">Ciriana
+            <div class="selected" id="selected">
+                <div class="pj">
+                    <div class="text">Name</div>
+                    <div class="text">HP</div>
+                    <div class="text">Armor</div>
+                    <div class="text">Armor</div>
+                </div>
             </div>
-            <div class="fighter" id="personaje3" onclick="elegirPersonaje('Gerald')">
-                <img src="img/personajeGerald.jpg" alt="imagen de Gerald">Gerald
+            <div class="botonera">
+                <h3>Ahora a luchar!</h3>
+                <button onclick="simularBatalla()"> FIGHT!</button>
             </div>
-            <div class="fighter" id="personaje4" onclick="elegirPersonaje('Maribol')">
-                <img src="img/personajeMaribol.jpg" alt="imagen de Maribol">Maribol
-            </div>
-        </div>
-        <div id="click">
-            <button id="boton" onclick="CambiaPantalla(3)">START</button>
         </div>
     </div>
     <!-- FIN DE LA CAPA DE LOS PERSONAJES -->
+
     <!-- PANTALLA CON DOS PERSONAJES ESCOGIDOS - pantalla 3 -->
-    <div id="pantalla3" class="personajesElegidos" style="display: none;">
-        <div id="goodRoster" class="general roster">
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-        </div>
-        <button onclick="CambiaPantalla(4)">
-            START PLAY!
-        </button>
-    </div>
-    <!-- PANTALLA DE LUCHA - pantalla 4 -->
-    <div id="pantalla4" class="personajesElegidos" style="display: none;">
-        <div class="general general3">
-            <button onclick="Atacar()" id="ataque">
-                LET´S FIGHT!
-            </button>
-            <button onclick="CambiaPantalla(5)">
-                AND THE WINER IS..
-            </button>
-        </div>
-    </div>
-    <!-- PAGINA PRINCIPAL -->
-    <div id="capaGeneral">
-        <div class="caratula">
-            <img src="img/caratulaJuego.jpg" alt="imagen juego The Witcher" id="caratula">
-            <div class="players">
-                <div class="player"><img src="img/Gerald.jpeg" alt="imagen de Gerald de Rivia" id="player1" onlick="">
+    <div class="seccionVisible" id="fase3" style="display:none">
+        <div class="general general2">
+            <!-- <img src="img/The-Witcher-3-Cabecera.jpg" alt="campo"> -->
+            <button onclick="cambiaPantalla(1)">BACK TO THE START</button>
+            <div class="battle" id="battle">
+                <div style="display: flex;">
+
+                    <div class="selected1" id="imagenJugador1">
+
+                    </div>
+
+                    <div class="selected1" id="imagenJugador2">
+                    </div>
                 </div>
-                <div class="player"><img src="img/yennefer.jpg" alt="imagen de Yennefer" id="player2" onclick="">
+                <div class="mensajes">
                 </div>
             </div>
         </div>
-        <div id="jugar">
-            <button id="botonJugar" onclick="display()">LETS PLAY!</button>
-        </div>
     </div>
-    <!-- <script src="js/juego.js"></script> -->
-    <!-- <script src="js/players.js"></script> -->
     <script src="js/main.js"></script>
-
 </body>
-
 </html>

@@ -1,265 +1,210 @@
-// MOSTRAR CAPA PERSONAJES Y OCULTAR PAGINA PRINCIPAL
-function display() {
-    let clic = 1;
-    if (clic == 1) {
-        document.getElementById("pantalla2").style.display = 'block';
-        document.getElementById("capaGeneral").style.display = 'none';
-        clic = clic + 1;
-    } else {
-        document.getElementById("pantalla2").style.display = 'none';
-        document.getElementById("capaGeneral").style.display = 'block';
-        clic = 1;
+//la funcion se llama mediante el botón de html con el onclick ="cambiaPantalla(num)"
+const cambiaPantalla = (num) => {
+
+    //la switch recibe el num que le decimos al pulsar los diferentes botones
+    //  elige el caso que usa segun el num del boton
+    switch (num) {
+
+        //el boton de la pagina 1 envia una señal de num 2 onclick="cambiaPantalla(2)"
+
+        case 2:
+            document.getElementById('fase1').style.display = "none";
+            document.getElementById('fase2').style.display = "flex";
+            break;
+
+        //el boton de la pagina 2 envia una señal de num 3 onclick="cambiaPantalla(3)"
+
+        case 3:
+            document.getElementById('fase2').style.display = "none";
+            document.getElementById('fase3').style.display = "flex";
+            break;
+
+        //el boton de la pagina 3 envia una señal de num 1 onclick="cambiaPantalla(1)"
+
+        case 1:
+            location.reload()
+            break;
     }
 }
 
-//Declaracion de variables del juego
+class Personaje {
+    //Constructor basico del personaje
+    constructor(name, hp, armor, hurt, image) {
+        this.name = name;
+        this.hp = hp;
+        this.armor = armor;
+        this.hurt = hurt;
+        this.image = image;
+    }
 
-let arrayPersonajes = [];
-
-//ELIJO DOS PERSONAJES Y LOS GUARDO
-const elegirPersonaje = (personaje) => {
-
-    if (arrayPersonajes.length < 2) {
-
-        arrayPersonajes.push(personaje);
-
-        if (arrayPersonajes.length == 2) {
-            alert(`Ya has escogido los 2 personajes: ${arrayPersonajes} PULSA START!`);
-            return;
+    // Funcion Recibir Daño
+    getHurt = (hurt) => {
+        const tirada = tirarDado();
+        if (tirada === 20) {
+            console.log("\tCRITICAL HIT! " + hurt * 2);
+            this.hp -= hurt * 2 - this.armor;
+        } else if (tirada === 1) {
+            console.log("\tHAS FALLADO!");
+        } else {
+            console.log("\tGOLPE NORMAL " + (hurt - this.armor));
+            this.hp -= hurt - this.armor;
         }
-        console.log(arrayPersonajes);
-        console.log(arrayPersonajes.length);
-
-    }
+    };
 }
 
-const CambiaPantalla = (valor) => {
-    console.log("probando que funciona");
-    //Ahora se a que pantalla quiero dirigirme al concatenar pantalla + valor que viene
-    //por parámetro.
-    let pantallaDestino = "pantalla" + valor;
-    
-    //A continuación creo un array con todas pantallas.
-    let arrayPantallas = ["pantalla3","pantalla4","pantalla5"];
-    
-    //El siguiente paso es incluir en arrayPantallas, todas las pantallas MENOS la de destino, para ello usamos
-    //filter.
-    arrayPantallas = arrayPantallas.filter(val => !pantallaDestino.includes(val));
-    console.log("probando el filtro");
-    //Primero habilitamos la fase a la que queremos ir
-    
-    document.getElementById(pantallaDestino).style.display = "flex";
-    
-    //Finalmente deshabilitamos el resto
-    
-    document.getElementById("pantalla2").style.display="none";
-    // for(let pantalla of arrayPantallas){
-    //     document.getElementById(pantalla).style.display = "none";
-    // }
-}
-const player1Selected = document.getElementById("goodRoster");
-const player2Selected= document.getElementById("goodGuys");
+// Nuestro tirador de dados
+const min = 1;
+const max = 20;
+const tirarDado = () => Math.floor(Math.random() * (max - min + min)) + 1;
 
-class Player {
-    constructor(nombre, ataque, suerte) {
-        this.nombre = nombre;
-        this.ataque = ataque;
-        this.suerte = suerte;
-        this.vida = 200;
+
+const brujosElement = document.getElementById("brujos");
+const selectedElement = document.getElementById("selected");
+
+selectedElement.innerHTML = "";
+
+const pers1 = new Personaje("Yennefer", 100, 10, 15, 'img/personajeYennefer.jpg');
+const pers2 = new Personaje("Ciri", 100, 5, 15, 'img/personajeCiri.jpg');
+const pers3 = new Personaje("Gerald", 100, 8, 35, 'img/personajeGerald.jpg');
+const pers4 = new Personaje("Maribol", 100, 5, 20, 'img/personajeMaribol.jpg');
+
+
+let arrayPJ = [pers1, pers2, pers3, pers4];
+
+
+let arraySeleccionados = [];
+const maximaSeleccionDePJ = 2;
+
+
+let pjSelec1;
+let pjSelec2;
+
+
+let infoBrujos = "";
+
+const pintarBrujos = () => {
+    for (let pos in arrayPJ) {
+        infoBrujos += `<div class="pj" id="pj${pos}" onclick="selectPJ(${parseInt(
+            pos
+        )})" > <div class="text">Name: ${arrayPJ[pos].name
+            } <img class="yennefer" src="${arrayPJ[pos].image}" />
+           </div> <div class="text">HP: ${arrayPJ[pos].hp
+            }</div> <div class="text">Armor: ${arrayPJ[pos].armor
+            }</div> <div class="text">Hurt: ${arrayPJ[pos].armor}</div> </div>`;
+    }
+    brujosElement.innerHTML = infoBrujos;
+};
+pintarBrujos();
+
+const selectPJ = (pos) => {
+    if (arraySeleccionados.length < maximaSeleccionDePJ) {
+        arraySeleccionados.push(arrayPJ[parseInt(pos)]);
+        document.getElementById("pj" + pos).style.pointerEvents = "none";
+        document.getElementById("pj" + pos).style.backgroundColor = "black";
+
+        pintarSeleccionados();
+
+        asignarParaPelear();
+    }
+};
+
+const pintarSeleccionados = () => {
+    let infoSelected = "";
+    for (let character of arraySeleccionados) {
+        infoSelected += `<div class="pj"> 
+                              <div class="text">Name: ${character.name} <img class="yennefer" src="${character.image}" /> 
+                              </div> <div class="text">HP: ${character.hp}</div> 
+                              <div class="text">Armor: ${character.armor}</div> 
+                              <div class="text">Damage: ${character.armor}</div> 
+                            </div>`;
+    }
+    selectedElement.innerHTML = infoSelected;
+};
+
+const asignarParaPelear = () => {
+    if (arraySeleccionados[0]) {
+        pjSelec1 = arraySeleccionados[0];
     }
 
-    recibirDaño = (damage) =>{
-        this.vida -= damage;
+    if (arraySeleccionados[1]) {
+        pjSelec2 = arraySeleccionados[1];
     }
+};
+
+let personaje1 = document.getElementById("pj");
+let personaje2 = document.getElementById("pj1");
+let personaje3 = document.getElementById("pj2");
+let personaje4 = document.getElementById("pj3");
+
+const muestraPersonaje = () => {
+
+    document.getElementById("imagenJugador1").innerHTML =
+        `<img class="image_size" src="${pers1.image}">
+                        <div>
+                          <p>${pers1.name}</p>
+                          <p>${pers1.hp}</p>
+                        </div>`;
+
+    document.getElementById("imagenJugador2").innerHTML =
+        `<img class="image_size" src="${pers2.image}">
+                        <div>
+                          <p>${pers2.name}</p>
+                          <p>${pers2.hp}</p>
+                        </div>`;
+
 }
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+// Funcion para simular la batalla, ira en el onclick del button Luchar
+const simularBatalla = async () => {
+    let alive = true;
+    cambiaPantalla(3)
+    muestraPersonaje()
+    const mensajesDiv = document.querySelector('.mensajes');
+    //Sin PJ seleccionados no hay pelea
+    if (!pjSelec1 || !pjSelec2) {
+        alert("Debes seleccionar personajes");
+    } else {
+        while (alive) {
+            if (alive) {
+                mensajesDiv.innerHTML = `TURNO DE ${pjSelec1.name}`;
+                await sleep(1000);
+                mensajesDiv.innerHTML = `Personaje ${pjSelec1.name} ataca a ${pjSelec2.name}`;
+                await sleep(1000);
+                console.log(
+                    `\t${pjSelec1.name} : ${pjSelec1.hp} / ${pjSelec2.name} : ${pjSelec2.hp}`
+                );
+                await sleep(1000);
+                pjSelec2.getHurt(pjSelec1.dmg);
+                alive = pjSelec2.hp > 0;
+                console.log(
+                    `\t${pjSelec1.name} : ${pjSelec1.hp} / ${pjSelec2.name} : ${pjSelec2.hp}`
+                );
+            }
 
-//INSTANCIO PLAYER 1, 2, 3 Y 4
+            if (alive) {
+                console.log(`TURNO DE ${pjSelec2.name}`);
+                console.log(`Personaje ${pjSelec2.name} ataca a ${pjSelec1.name}`);
+                console.log(
+                    `\t${pjSelec2.name} : ${pjSelec2.hp} / ${pjSelec1.name} : ${pjSelec1.hp}`
+                );
 
-const player1 = new Player("Yennefer", 30, 50);
-const player2 = new Player("Ciriana", 60, 20);
-const player3 = new Player("Gerald de Rivia", 50, 40);
-const player4 = new Player("Maribol", 25, 10);
- 
-const fighters = [player1,player2,player3,player4];
+                pjSelec1.getHurt(pjSelec2.dmg);
+                alive = pjSelec1.hp > 0;
+                console.log(
+                    `\t${pjSelec2.name} : ${pjSelec2.hp} / ${pjSelec1.name} : ${pjSelec1.hp}`
+                );
+            }
+        }
 
-
-
-// let fighter1;
-// let fighter2;
-// let goodPlayers = "";
-// let evilPlayers = "";
-
-// //GOOD PLAYERS VIEW 2 - CHOOSING A PLAYER
-
-// const displayGoodPlayers = () =>{
-//     for (let fighter in goodFighters) {
-//         goodPlayers += `<div class="card" onclick="selectGoodPlayer(${fighter})
-//         "id="fighter${fighter}" style="background-image: url('${goodFighters[fighter].image}');">
-//         <div class="text">Name: ${
-//             goodFighters[fighter].name
-//         } </div> <div class="text">Resistency: ${
-//             goodFighters[fighter].resistencia
-//         }</div> <div class="text">Strenght: ${
-//             goodFighters[fighter].strenght
-//         }</div> <div class="text">Life: ${goodFighters[fighter].life}</div> </div>`;
-//       }
-//       rosterGoodFighters.innerHTML = goodPlayers;
-//     };
-
-// displayGoodPlayers();  
-
-// let goodGuys = document.getElementById("goodGuys");
-
-// const selectGoodPlayer = () => {
-//     let displayGoodPlayer = "";
-//     for (let character of selectedFighters) {
-//         displayGoodPlayer += `<div class="card" onclick="selectGoodPlayer(${fighter})"id="fighter${fighter}" style="background-image: url('${goodFighters[fighter].image}');">  <div class="text">Name: ${
-//             goodFighters[fighter].name
-//         } </div> <div class="text">Resistency: ${
-//             goodFighters[fighter].resistencia
-//         }</div> <div class="text">Strenght: ${
-//             goodFighters[fighter].strenght
-//         }</div> <div class="text">Life: ${goodFighters[fighter].life}</div> </div>`
-    
-//     }
-//     player1Selected.innerHTML = displayGoodPlayer;
-//   };
-
-
-// Esta debería recorrer el array de seleccionados y pintar el seleccionado en el HTML, pero no funciona...
-
-
-
-
-// const selectGoodPlayer = () => {
-//     let selectedPlayer = "";
-//     for (let player of goodFighters) {
-//         selectedPlayer += `<div class="card" style="background-image: url('${player.image}');"> <div class="text">Name: ${player.name} </div>`;
-//     }
-
-//     player1Selected.innerHTML = selectedPlayer;
-//   };
-  
-
-/*
-ONCLICK FUNCTION IN ORDER TO SELECT THE PLAYER 1 -> NOT WORKING
-*/
+        pjSelec1.hp === 0
+            ? console.log(`${pjSelec2.name} Ha ganado`)
+            : console.log(`${pjSelec1.name} Ha ganado`);
+    }
+};
 
 
 
 
 
-//   const selectGoodPlayer = (pos) => {
-//     // Solo seleccionamos mientras no superemos el limite
-//     if (selectedFighters.length < maxFighters) {
-//         selectedFighters.push(goodFighters[parseInt(pos)]);
-  
-//       //Como ya lo tenemos seleccionado, no queremos que se vuelva a seleccionar
-//       document.getElementById("card" + pos).style.pointerEvents = "none";
-//       document.getElementById("card" + pos).style.backgroundColor = "grey";
-  
-//       displayGoodPlayers();
-  
-//     }
-//   };
-  
-//   const asignToFight = () => {
-//     if (selectedFighters[0]) {
-//         fighter1 = selectedFighters[0];
-//     }
-  
-//     if (selectedFighters[1]) {
-//         fighter2 = selectedFighters[1];
-//     }
-//   };
-
-  /*
-  ESTILO PARA APLICARLE AL BOX DEL PLAYER SELECCIONADO
-
-
-    background-image: url(/images/blackAdam.png);
-    background-position: center;
-    background-size: 100%;
-    background-repeat: no-repeat;
-  
-  
-  */
-
-//EVIL PLAYERS VIEW 3 - CHOOSING AN OPPONENT PLAYER
-// let badGuys = document.getElementById("badGuys");
-
-//     const displayEvilPlayers = () =>{
-//         for (let fighter in evilFighters) {
-//             evilPlayers += `<div class="card" id="fighter${fighter}" style="background-image: url('${evilFighters[fighter].image}');">  <div class="text">Name: ${
-//                 evilFighters[fighter].name
-//             } </div> <div class="text">Resistency: ${
-//                 evilFighters[fighter].resistencia
-//             }</div> <div class="text">Strenght: ${
-//                 evilFighters[fighter].strenght
-//             }</div> <div class="text">Life: ${evilFighters[fighter].life}</div> </div>`;
-//           }
-//           rosterEvilFighters.innerHTML = evilPlayers;
-//         };
-
-
-
-
-
-//     const displayEvilPlayer = () => {
-//         let selectedPlayer = "";
-//         for (let player of evilFighters) {
-//             selectedPlayer += `<div class="card" style="background-image: url('${player.image}');"> <div class="text">Name: ${player.name} </div>`;
-//         }
-    
-//         player2Selected.innerHTML = selectedPlayer;
-//       };
-
-//     displayEvilPlayers();
-
-// //SPLICE PARA SACAR EL FIGHTER DEL ARRAY
-
-// const Atacar = () => {
-//     goodFighters[0].recibirDaño(evilFighters[3].strenght);
-//     console.log(goodFighters[0].life);
-// }
-
-
-// // console.log(superman.life);
-
-// // console.log(docManhattan.life);
-
-
-
-
-
-
-
-
-// let partida = {
-
-//     //propiedades
-//     equipo1: [],
-//     equipo2: [],
-
-
-//     //métodos
-
-//     escoge1(idLuchador){
-//         //player 1 selección de personajes.
-
-//         /*introducimos los luchadores escogidos en su array correspondiente.
-//           usamos el diccionario-traductor allplayers con la idLuchador como referencia para 
-//           direccionar a la clase instanciada*/
-//         this.equipo1.push(allplayers[idLuchador]);
-
-//         //comprobamos el array del primero equipo por consola.
-//         console.log(this.equipo1);
-//     },
-
-//     escoge2(){
-//         //repetiremos la operación del primer equipo, en este caso hemos de averiguar como 
-//         //hacerlo para no poder escoger luchadores repetidos. 
-//     },
-
-
-// }
