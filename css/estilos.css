@@ -47,7 +47,7 @@ body {
     color: white;
     display: flex;
     justify-content: center;
-    font-size: 1.1em;
+    font-size: 1em;
     text-align: center;
 }
 
@@ -138,7 +138,7 @@ body {
     color:white;
 }
 
-.pj {
+.personaje {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -149,7 +149,7 @@ body {
     margin-right: 1em;
 }
 
-.pj:hover {
+.pj:hover, .pj1:hover, .pj2:hover, .pj2:hover {
     opacity: 70%;
     text-decoration: none;
 }
@@ -163,32 +163,7 @@ body {
     height: 130px;
 }
 
-.yennefer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 110px;
-    height: 190px;
-}
-
-.pj1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 15em;
-    height: 15em;
-    margin-left: 1em;
-    margin-right: 1em;
-}
-
-.pj1:hover {
-    opacity: 50%;
-    text-decoration: none;
-}
-
-.ciri {
+.yennefer, .ciri, .gerald, .maribol {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -197,7 +172,7 @@ body {
     height: 130px;
 }
 
-.pj2 {
+.pj, .pj1, .pj2, .pj3 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -206,45 +181,6 @@ body {
     height: 15em;
     margin-left: 1em;
     margin-right: 1em;
-}
-
-.pj2:hover {
-    opacity: 50%;
-    text-decoration: none;
-}
-
-.gerald {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 110px;
-    height: 130px;
-}
-
-.pj3 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 15em;
-    height: 15em;
-    margin-left: 1em;
-    margin-right: 1em;
-}
-
-.pj3:hover {
-    opacity: 50%;
-    text-decoration: none;
-}
-
-.maribol {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 180px;
-    height: 130px;
 }
 
 .botonera {
@@ -260,7 +196,6 @@ body {
     position: absolute;
     width: 600px;
     height: 500px;
-    /* border: black solid 1px; */
     color: white;
     display: flex;
     align-items: center;

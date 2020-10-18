@@ -81,13 +81,13 @@ let infoBrujos = "";
 //Declaro la función de flecha
 const pintarBrujos = () => {
     for (let x in arrayPJ) {
-        infoBrujos += `<div class="pj" id="pj${x}" onclick="selectPJ(${parseInt(
+        infoBrujos += `<div class="personaje" id="pj${x}" onclick="selectPJ(${parseInt(
             x
         )})" > <div class="text">Name: ${arrayPJ[x].name
             } <img class="persona" src="${arrayPJ[x].image}" />
            </div> <div class="text">Power: ${arrayPJ[x].power
             }</div> <div class="text">Armor: ${arrayPJ[x].armor
-            }</div> <div class="text">Hurt: ${arrayPJ[x].armor}</div> </div>`;
+            }</div> <div class="text">Hurt: ${arrayPJ[x].hurt}</div> </div>`;
     }
     brujosElement.innerHTML = infoBrujos;
 };
@@ -109,7 +109,7 @@ const selectPJ = (x) => {
 const pintarSeleccionados = () => {
     let infoSelected = "";
     for (let character of arraySeleccionados) {
-        infoSelected += `<div class="pj"> 
+        infoSelected += `<div class="personaje"> 
                               <div class="text">Name: ${character.name} <img class="persona" src="${character.image}" /> 
                               </div> <div class="text">Power: ${character.power}</div> 
                               <div class="text">Armor: ${character.armor}</div> 
@@ -137,17 +137,17 @@ let personaje4 = document.getElementById("pj3");
 const muestraPersonaje = () => {
 
     document.getElementById("imagenJugador1").innerHTML =
-        `<img class="image_size" src="${pers1.image}">
+        `<img class="image_size" src="${pjSelec1.image}">
                         <div>
-                          <p>${pers1.name}</p>
-                          <p>${pers1.power}</p>
+                          <p>${pjSelec1.name}</p>
+                          <p>${pjSelec1.power}</p>
                         </div>`;
 
     document.getElementById("imagenJugador2").innerHTML =
-        `<img class="image_size" src="${pers2.image}">
+        `<img class="image_size" src="${pjSelec2.image}">
                         <div>
-                          <p>${pers2.name}</p>
-                          <p>${pers2.power}</p>
+                          <p>${pjSelec2.name}</p>
+                          <p>${pjSelec2.power}</p>
                         </div>`;
 
 }
@@ -199,8 +199,8 @@ const simularBatalla = async () => {
         }
 //Ternaria para indicar qué personaje ha ganado.
         pjSelec1.power === 0
-            ? console.log(`${pjSelec2.name} Ha ganado`)
-            : console.log(`${pjSelec1.name} Ha ganado`);
+            ? alert(`${pjSelec2.name} Ha ganado`)
+            : alert(`${pjSelec1.name} Ha ganado`);
     }
 };
 
