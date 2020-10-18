@@ -19,7 +19,7 @@ body {
 
 .principal {
     background-image: url(/img/The-Witcher-3-Cabecera.jpg);
-} 
+}
 
 #botonJugar {
     background-color: rgb(226, 199, 220);
@@ -132,10 +132,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color:black;
+    background-color: black;
     width: 80vw;
     height: 50vh;
-    color:white;
+    color: white;
 }
 
 .personaje {
@@ -188,7 +188,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: black; 
+    background-color: black;
 }
 
 .battle {
@@ -211,7 +211,7 @@ body {
 }
 
 .botonera button {
-    background: linear-gradient(180deg, #2c2c2c, rgb(154, 158, 153));  
+    background: linear-gradient(180deg, #2c2c2c, rgb(154, 158, 153));
     font-size: 2em;
     cursor: pointer;
 }
