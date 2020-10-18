@@ -9,80 +9,80 @@
 </head>
 
 <body>
-<!-- PAGINA PRINCIPAL -->
-<div class="seccionVisible principal" id="fase1">
-    <div class="general general1">
-        <button id="botonJugar" onclick="cambiaPantalla(2)">PLAY</button>
-    </div>
-</div>
+    <!-- PAGINA PRINCIPAL -->
+    <section class="seccionVisible principal" id="fase1">
+        <div class="general general1">
+            <button id="botonJugar" onclick="cambiaPantalla(2)">PLAY</button>
+        </div>
+    </section>
 
-    <!-- PANTALLA DE PERSONAJES (SE DESPLIEGA CUANDO SE APRIETA EL BOTON LETS PLAY! DE PANTALLA PRINCIPAL) -->
-    <div class="seccionVisible" id="fase2" style="display: none;">
-        <div class="texto">ESCOGE DOS JUGADORES</div>
+    <!-- PANTALLA DE PERSONAJES (pantalla2) -->
+    <section class="seccionVisible" id="fase2" style="display: none;">
+        <h1 class="texto">ESCOGE DOS JUGADORES</h1>
         <div class="container">
             <div class="cards" id="brujos">
+                <button onclick="cambiaPantalla(3)">LLEVAME A LA PÁGINA 3</button>
                 <div class="pj">
                     <div class="text">
-                        <img id="pj" src="img/personajeYennefer.jpg" alt="Yennefer">Yennefer
-                    </div>
-                    <div class="text">HP</div>
+                        Yennefer
+                        <img id="pj" src="img/personajeYennefer.jpg" alt="Yennefer"></div>
+                    <div class="text">Power</div>
                     <div class="text">Armor</div>
                     <div class="text">Armor</div>
                 </div>
                 <div class="pj1">
                     <div class="text">
-                        <img id="pj1" src="img/personajeCiri.jpg" alt="Ciri">Ciri
+                        Ciri
+                        <img id="pj1" src="img/personajeCiri.jpg" alt="Ciri">
                     </div>
-                    <div class="text">HP</div>
+                    <div class="text">Power</div>
                     <div class="text">Armor</div>
                     <div class="text">Armor</div>
                 </div>
                 <div class="pj2">
                     <div class="text">
-                        <img id="pj2" src="img/personajeGerald.jpg" alt="Gerald">Gerald
+                        Gerald
+                        <img id="pj2" src="img/personajeGerald.jpg" alt="Gerald">
                     </div>
-                    <div class="text">HP</div>
+                    <div class="text">Power</div>
                     <div class="text">Armor</div>
                     <div class="text">Armor</div>
                 </div>
                 <div class="pj3">
                     <div class="text">
-                        <img id="pj3" src="img/personajeMaribol.jpg" alt="Maribol">Maribol
+                        Maribol
+                        <img id="pj3" src="img/personajeMaribol.jpg" alt="Maribol">
                     </div>
-                    <div class="text">HP</div>
+                    <div class="text">Power</div>
                     <div class="text">Armor</div>
                     <div class="text">Armor</div>
                 </div>
-                <button id="boton" onclick="cambiaPantalla(3)">START</button>
             </div>
             <div class="selected" id="selected">
                 <div class="pj">
                     <div class="text">Name</div>
-                    <div class="text">HP</div>
+                    <div class="text">Power</div>
                     <div class="text">Armor</div>
                     <div class="text">Armor</div>
                 </div>
             </div>
             <div class="botonera">
-                <h3>Ahora a luchar!</h3>
-                <button onclick="simularBatalla()"> FIGHT!</button>
+                <button id="boton" onclick="simularBatalla()">FIGHT!</button>
             </div>
         </div>
-    </div>
+    </section>
+
     <!-- FIN DE LA CAPA DE LOS PERSONAJES -->
 
     <!-- PANTALLA CON DOS PERSONAJES ESCOGIDOS - pantalla 3 -->
-    <div class="seccionVisible" id="fase3" style="display:none">
+    <section class="seccionVisible" id="fase3" style="display:none">
         <div class="general general2">
-            <!-- <img src="img/The-Witcher-3-Cabecera.jpg" alt="campo"> -->
-            <button onclick="cambiaPantalla(1)">BACK TO THE START</button>
+            <img src="img/fondoOscuro.jpg" alt="poster de the witcher">
+            <button onclick="cambiaPantalla(1)">BACK</button>
             <div class="battle" id="battle">
                 <div style="display: flex;">
-
                     <div class="selected1" id="imagenJugador1">
-
                     </div>
-
                     <div class="selected1" id="imagenJugador2">
                     </div>
                 </div>
@@ -90,7 +90,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <script src="js/main.js"></script>
+    </section>
+        <script src="js/main.js"></script>
 </body>
+
 </html>
