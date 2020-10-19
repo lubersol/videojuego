@@ -18,7 +18,7 @@ body {
 }
 
 .principal {
-    background-image: url('./images/The-Witcher-3-Cabecera.jpg');
+    background-image: url('https://raw.githubusercontent.com/lubersol/videojuego/master/img/cabecera.jpg');
 }
 
 #botonJugar {
